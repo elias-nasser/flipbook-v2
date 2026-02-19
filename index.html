@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/elias.min.css">
+	<!-- /end css -->
+</head>
+<body>
+
+<!-- flipbook markup -->
+<div id="flipbook" style="height:700px;"></div>
+<!-- /end flipbook markup -->
+
+<!-- scripts-section -->
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/pdf.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.elias.min.js"></script>
+<script>
+$(document).ready(function() {
+	var options = {
+		responsive:true,
+		autoFit:true,
+		autoHeight: false,
+		
+		padding:{
+			top:20,
+			left:10,
+			right:10,
+			bottom:70
+		},
+		
+		pdfUrl: 'assets/pdf/Catalog.pdf',
+		pdfAutoCreatePages: true,
+		pdfBookSizeFromDocument: true,
+		
+		zoom:1,
+		
+		toolbarControls: [
+			{type:'share',        active:false},
+			{type:'sound',        active:true, optional: false},
+			{type:'outline',      active:true},
+			{type:'thumbnails',   active:true},
+			{type:'gotofirst',    active:true},
+			{type:'prev',         active:true},
+			{type:'pagenumber',   active:true},
+			{type:'next',         active:true},
+			{type:'gotolast',     active:true},
+			{type:'zoom-in',      active:true, optional: false},
+			{type:'zoom-out',     active:true, optional: false},
+			{type:'zoom-default', active:true, optional: false},
+			{type:'optional',     active:false},
+			{type:'fullscreen',   active:true, optional: false},
+		],
+		
+		bookmarks: [
+
+			{text:'Front Cover', link:'1'},
+
+			
+			{text:'Rings', link:'2'},
+			{text:'Bracelet', link:'6'},
+			{text:'Necklace', link:'10'},
+			{text:'Earrings', link:'14'},
+			
+			{text:'Back Cover', link:'-1'},
+		],
+	};
+	
+	$('#flipbook').elias(options);
+	
+	// Events
+	$('#flipbook').on('elias:ready', function(e, plugin) {
+		console.log('event:ready');
+	});
+	
+	$('#flipbook').on('elias:showpage', function(e, plugin, page) {
+		console.log('event:showpage [' + page + ']');
+	});
+	
+	$('#flipbook').on('elias:hidepage', function(e, plugin, page) {
+		console.log('event:hidepage [' + page + ']');
+	});
+});
+</script>
+<!-- /end scripts-section -->
+</body>
+</html>
