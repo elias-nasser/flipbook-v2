@@ -18,3 +18,21 @@ body {
  *===========================================*/
 @media only screen and (max-width: 1024px) {
 }
+/*===========================================
+ * Flipbook RTL Support for Arabic PDFs
+ *===========================================*/
+#flipbook {
+	direction: rtl;       /* Make the flipbook read right-to-left */
+	text-align: right;    /* Align text and numbers to the right */
+}
+
+/* Optional: adjust double-page view */
+#flipbook .page {
+	direction: rtl;
+	text-align: right;
+}
+
+/* Optional: if you have page numbers toolbar */
+#flipbook .elias-toolbar .pagenumber {
+	text-align: right;
+}
